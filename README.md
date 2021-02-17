@@ -1,8 +1,8 @@
 # Unity-Platformer-Example
 Basic Unity 2D Platformer Game Test
 
-developer : KyeongSeok Jang, HyeonWoo Choi
+developer : KyeongSeok Jang (davejang) , HyeonWoo Choi
 
-designer : MinSeok Kim, ShinKyu Kang
+designer : MinSeok Kim (simworm) , ShinKyu Kang (mahogram)
 
-screenwriter : SungJun Jo
+screenwriter : SungJun Jo (persnabi)
