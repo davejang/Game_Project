@@ -6,3 +6,5 @@ Developer : KyeongSeok Jang (davejang) , HyeonWoo Choi
 Designer : MinSeok Kim (simworm) , ShinKyu Kang (mahogram)
 
 Screenwriter : SungJun Jo (persnabi)
+
+BSGwiki.infinityfreeapp.com
