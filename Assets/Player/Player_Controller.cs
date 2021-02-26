@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     public float Max_speed;
+    public float jump_power;
     public int idle_state;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -19,6 +20,11 @@ public class Player_Controller : MonoBehaviour
         Invoke("Think",3);
     }
     private void Update(){
+        // Jump
+        if(Input.GetButtonDown("Jump") && !animator.GetBool("jumping")){
+            rigid.AddForce(Vector2.up * jump_power,ForceMode2D.Impulse);
+            animator.SetBool("jumping",true);
+        }
         // Friction Handling
         if(Input.GetButtonUp("Horizontal")){    
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f,rigid.velocity.y);
@@ -52,6 +58,19 @@ public class Player_Controller : MonoBehaviour
         }
         else if(rigid.velocity.x < Max_speed * (-1)){     // left speed handling
              rigid.velocity = new Vector2(Max_speed * (-1),rigid.velocity.y);
+        }
+
+        //Landing Platform
+        if(rigid.velocity.y < 0){
+        //Debug.DrawRay(rigid.position,Vector3.down,new Color(0,1,0));
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position,Vector3.down,2,LayerMask.GetMask("platform"));
+            if(rayHit.collider != null){
+            
+                if(rayHit.distance < 1.4f){
+                  //Debug.Log(rayHit.collider.name);
+                  animator.SetBool("jumping",false);
+                }   
+            }   
         }
     }
     void Think(){
